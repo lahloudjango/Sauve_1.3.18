@@ -1,0 +1,38 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}Menu Stock Labo{% endblock title%}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	<div  class="header_pistolet">
+		<p>Menu Stock Labo</p>
+	</div>
+{% endblock header%}
+
+{% block corps %}
+	<div  class="page_pistolet">
+		<p>
+			<a href="/django/menu/" title="Stock_labo PC">0 : Menu précédant</a>
+		<br/>
+			<a href="/django/stock_labo_pistolet/statut/" title="Stock_labo Pistolet">1 : Satut</a>
+		<br/>
+			<a href="/django/stock_labo_pistolet/reception" title="Menu utilisateur / Préférence">2 : Réception</a>
+		<br/>
+			<a href="/django/stock_labo_pistolet/mouvement" title="Menu utilisateur / Préférence">3 : Mouvement</a>
+		<br/>
+			<a href="/django/utilisateur/logout/" title="Déconnexion">99 : Déconnexion</a>
+		</p>
+
+		<form action="/django/stock_labo_pistolet/menu/" method="get">
+			{% csrf_token %}
+			<p>
+				{{ menu_selection_form.as_table }}
+				<input type="submit" hidden="hidden" name="Ok" value="Ok" />
+			</p>
+		</form>
+	</div>
+{% endblock corps %}
+
+

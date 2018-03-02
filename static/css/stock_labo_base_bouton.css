@@ -1,0 +1,40 @@
+
+.bouton-right
+{
+	vertical-align: top;
+	display: inline-block;
+	width: 10%;
+	margin: 0px;
+	padding: 0px;
+	padding-left: 10px;
+	padding-top: 20px;
+	padding-bottom: 0px;
+/*	position: absolute;
+	right: 2%;
+	top: 35%;
+	width: 12%;
+/*	min-height: 500px; /* 98% de hauteur de l'ecran ; 100vw = 100% largeur ecran ; 100vh = 100% hauteur ecran */
+	border-color: black;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+}
+
+.bouton_action
+{
+	width: 100%;
+	display: inline-block;
+	border-color: black;
+	border-width: 1px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-radius: 10px 10px 10px 10px;
+	margin: 8px;
+	padding: 0px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color: rgba(163, 26, 106, 0.6);
+}
+
+.bouton_action:hover
+{
+	background-color: rgba(163, 26, 106, 0.8);
+}

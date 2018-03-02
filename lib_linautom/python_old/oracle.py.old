@@ -1,0 +1,127 @@
+#-*- coding: utf-8 -*-
+from __future__ import unicode_literals
+"""
+Module d'enrobage autour de cx_Oracle avec mise en forme des données en dictionaire
+"""
+
+__author__ = "Charly GONTERO"
+__date__ = "2015-12-22 13:23:28"
+__version__ = "1.1.0"
+__credits__ = """
+ *  oracle.py
+ *
+ *  Copyright 2015 Charly GONTERO
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ *  MA 02110-1301, USA.
+"""
+
+import subprocess
+import time
+
+def auto_detect():
+	print "Oracle import auto detect"
+	ldd_version = subprocess.Popen("ldd --version", shell=True, stdout=subprocess.PIPE)
+	ldd_version.lignes = ldd_version.stdout.readlines()
+	ldd_version.ligne0_split = ldd_version.lignes[0].split(" ")
+	ldd_version.distribution = ldd_version.ligne0_split[1][1:]
+	ldd_version.serie = ldd_version.ligne0_split[2]
+	ldd_version.version = float(ldd_version.ligne0_split[4][:-1])
+	ldd_version.version_ = ldd_version.ligne0_split[4][:-1].replace(".","_")
+	print ldd_version.distribution
+	print ldd_version.serie
+	print ldd_version.version
+	print ldd_version.version_
+	if ldd_version.serie == "EGLIBC": #cx_Oracle_EGLIBC_2_13.so
+		if 2.13 >= ldd_version.version:
+			ldd_version.version_select = "2_13"
+		else:
+			print "!! Oracle version libc incompatible : %s" %(ldd_version.version_)
+	elif ldd_version.serie == "GLIBC": #cx_Oracle_GLIBC_2_13.so
+		if 2.14 >= ldd_version.version:
+			ldd_version.version_select = "2_14"
+		else:
+			print "!! Oracle version libc incompatible : %s" %(ldd_version.version_)
+	else:
+		print "!! Oracle serie libc incompatible : %s" %(ldd_version.serie)
+	print ldd_version.version_select
+	lib_check = subprocess.Popen("ls -lah ./lib_linautom/python/cx_Oracle.* | grep %s | grep %s" %(ldd_version.serie, ldd_version.version_select), shell=True, stdout=subprocess.PIPE)
+	lib_check.lignes = lib_check.stdout.readlines()
+	if len(lib_check.lignes) == 0:
+		print "Librairie oracle incorrect"
+		lib_rm = subprocess.Popen("cd ./lib_linautom/python/ ; rm cx_Oracle.so", shell=True, stdout=subprocess.PIPE)
+		print lib_rm.stdout.readlines()
+		lib_ln = subprocess.Popen("cd ./lib_linautom/python/ ; ln -s cx_Oracle_%s_%s.so cx_Oracle.so" %(ldd_version.serie, ldd_version.version_select), shell=True, stdout=subprocess.PIPE)
+		print lib_ln.stdout.readlines()
+		print "link modifié pour import"
+	else:
+		print "Librairie oracle correct"
+
+	time.sleep(1)
+	list_f = subprocess.Popen("ls -lah ./lib_linautom/python/cx_Oracle*", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+	list_f.lignes = list_f.stdout.readlines()
+
+auto_detect()
+
+import cx_Oracle
+
+VERSION = __version__
+def version():
+	return __version__
+
+
+class Oracle(object):
+	"""
+	Definie les connections vers les serveurs de base de donnees contenant les base de reference et les base à mettre à jour
+	"""
+	def __init__(self):
+		"""
+		Rien a faire
+		"""
+
+	def open(self, oracle_host, oracle_port, oracle_user, oracle_password, oracle_sid):
+		"""
+		Ouvre les connection vers les serveur de base de donnees
+		"""
+		self.oracle_con = cx_Oracle.connect(oracle_user, oracle_password, cx_Oracle.makedsn(oracle_host, oracle_port, oracle_sid))
+		self.oracle_con_curseur = self.oracle_con.cursor()
+
+	def execute(self, querry):
+		"""
+		Execute les requetes SQL:
+		"""
+		self.oracle_con_curseur.execute(querry)
+		resultat = self.oracle_con_curseur.fetchall()
+		if len(resultat) > 0:
+			col_liste_num = range(0, len(resultat[0]))
+			col_liste_nom = []
+			for c in self.oracle_con_curseur.description:
+				col_liste_nom.append(c[0])
+			resultat_dict = []
+			for ligne in resultat:
+				l = {}
+				for colonne in col_liste_num:
+					l.update({col_liste_nom[colonne]:ligne[colonne]})
+				resultat_dict.append(l)
+			return resultat_dict
+		else:
+			return []
+
+	def close(self):
+		"""
+		Ferme les connection vers les serveur de base de donnees
+		"""
+		self.oracle_con_curseur.close()
+		self.oracle_con.close()

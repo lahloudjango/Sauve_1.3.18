@@ -1,0 +1,40 @@
+{% load i18n %}
+
+{% if table.p == True %}
+	<div class={{ class_div }}>
+		<table
+			{% if table.summary != None %} summary="{{ table.summary }}"{% endif %}
+			{% if table.table_class != None %} class="{{ table.table_class }}"{% endif %}
+			{% if table.title != None %} title="{{ table.title }}"{% endif %}
+			{% if table.style != None %} style="{{ table.style }}"{% endif %}
+			{% if table.table_id != None %} id="{{ table.table_id }}"{% endif %}
+			>
+			{% if table.entete == True %}
+				<caption class="list1_table_caption">
+					{{ table.caption }}
+				</caption>
+			{% endif %}
+			<tbody>
+				{% for ligne in table.headers %}
+					{% include "table_ligne.html" with ligne=ligne %}
+				{% endfor %}
+				{% for ligne in table.liste %}
+					{% include "table_ligne.html" with ligne=ligne %}
+				{% endfor %}
+				{% for ligne in table.footers %}
+					{% include "table_ligne.html" with ligne=ligne %}
+				{% endfor %}
+			</body>
+		</table>
+	</div>
+	{% if recherche != None %}
+		<div class="list1_p">
+			<label title="{% trans "nombre de ligne afficher / nombre de résultat de recherche / nombre total" %}"><label style="display: inline-block;"></label>{{ recherche.limit_du.label }} {{ recherche.limit_du }} {{ recherche.limit_au.label }} {{ recherche.limit_au }} : {{ list1.n_ligne_limit }} {% trans "de" %} {{ list1.n_ligne_affiche }} {% trans "sur" %} {{ list1.n_ligne_total }}</label>
+		</div>
+	</form>
+	{% else %}
+		<div class="list1_p">
+			<label title="{% trans "nombre de ligne afficher / nombre de résultat de recherche / nombre total" %}"><label style="display: inline-block;"></label>{{ list1.n_ligne_limit }} {% trans "de" %} {{ list1.n_ligne_affiche }} {% trans "sur" %} {{ list1.n_ligne_total }}</label>
+		</div>
+	{% endif %}
+{% endif %}

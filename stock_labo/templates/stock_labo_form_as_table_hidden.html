@@ -1,0 +1,12 @@
+{% for field in form %}
+	{% if field.is_hidden == 1 %}
+		<tr>
+			<td>
+			</td>
+			<td>
+				{{ field.errors }}
+				{{ field }}
+			</td>
+		</tr>
+	{% endif %}
+{% endfor %}

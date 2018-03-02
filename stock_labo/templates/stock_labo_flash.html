@@ -1,0 +1,42 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+	<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_base_bouton.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_nomenclature_liste.css" />
+	<script type="text/javascript" src="/static/js/flash.js"></script>
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	{% if info.info != None %}
+		<p class="info">{% autoescape off %}{{ info.info }}{% endautoescape %}</p>
+	{% endif %}
+	{% if info.erreur != None %}
+		<p class="erreur">{% autoescape off %}{{ info.erreur }}{% endautoescape %}</p>
+	{% endif %}
+	<div>
+		<form id="id_mode_form" action="/django/stock_labo/flash/" method="get">
+			<table align="center">
+				<tbody>
+					{% include "stock_labo_form_as_table.html" with form=flash_mode_form formulaire_text="formulaire_text" formulaire_champ="formulaire_champ" %}
+				</tbody>
+			</table>
+		</form>
+	</div>
+	{% include "table.html" with table=list1 recherche=recherche class_div="list" %}
+	<div class="bouton-right">
+		{% for b in bouton.liste %}
+			<center><a class="bouton_action" title="{{ b.title }}" href="{{ b.href }}" {% if b.new_windows == 1 %}target="_blank"{% endif %}>{% autoescape off %}{{ b.label }}{% endautoescape %}</a></center>
+		{% endfor %}
+	</div>
+{% endblock corps%}
+

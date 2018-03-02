@@ -1,0 +1,49 @@
+{% extends "stock_labo_base.html" %}
+
+
+{% block title %}Menu Utilisateur{% endblock title%}
+
+{% block link %}
+	<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_base.css" />
+{% endblock link %}
+
+
+{% block header %}
+	<div  class="header_pistolet">
+		<p>
+			<label>Menu Utilisateur</label>
+		</p>
+	</div>
+{% endblock header%}
+
+{% block corps %}
+	<div  class="page_pistolet">
+		<p>
+			<a href="/django/menu/" title="Menu Précédant">0 : Précédant</a>
+			<br/>
+			<a href="/django/utilisateur/login/" title="Se connecter - changer d'utilisateur">1 : Connection</a>
+			<br/>
+			<a href="/django/utilisateur/change/" title="Modifier un utilisateur">2 : Modifier</a>
+			<br/>
+			<a href="/django/utilisateur/password/" title="Changer de mot de passe">3 : Password</a>
+			<br/>
+			<a href="/django/utilisateur/logout/" title="Déconnexion">99 : Déconnexion</a>
+		</p>
+
+		<form action="/django/utilisateur/menu/" method="get">
+			<p>
+				{{ menu_form.as_table }}
+				<input type="submit" hidden="hidden" name="Ok" value="Ok" />
+			</p>
+		</form>
+
+		{% if user.username != "" %}
+			<p id="user">
+				<label>{{ user.first_name }} {{ user.last_name }} ({{ user.username }})  ;  Email : {{ user.email }}</label>
+			</p>
+		{% endif %}
+	</div>
+{% endblock corps %}
+
+
+

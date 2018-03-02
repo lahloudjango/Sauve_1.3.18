@@ -1,0 +1,62 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}Menu Stock Labo{% endblock title%}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	<div class="header_pistolet">
+		<p>Menu Stock Labo</p>
+	</div>
+{% endblock header %}
+
+{% block corps %}
+	{% if info.code == "prod" and info.data == "prod" %}
+	<div class="page_pistolet">
+	{% endif %}
+	{% if info.code == "dev" %}
+		{% if info.data == "dev" %}
+	<div class="page_pistolet" style="background-position: top center;
+										background-image : url(/static/svg/Travaux.svg);
+										background-size: 55%;
+										background-repeat: no-repeat; /* no-repeat repeat-x repeat-y inherit */">
+		{% endif %}
+		{% if info.data == "prod" %}
+	<div class="page_pistolet" style="background-position: top center;
+										background-image : url(/static/svg/attention.svg);
+										background-size: 55%;
+										background-repeat: no-repeat; /* no-repeat repeat-x repeat-y inherit */">
+		{% endif %}
+	{% endif %}
+		<p>
+			<a href="/django/stock_labo/nomenclature/" title="Stock_labo PC">1 : Stock Labo PC</a>
+		<br/>
+			<a href="/django/stock_labo_pistolet/menu" title="Stock_labo Pistolet">2 : Stock Labo Pistolet</a>
+		<br/>
+			<a href="/django/utilisateur/menu/" title="Menu utilisateur / Préférence">98 : Menu Utilisateur</a>
+		<br/>
+			<a href="/django/utilisateur/logout/" title="Déconnection">99 : Déconnection</a>
+		</p>
+
+		<form action="/django/menu/" method="get">
+			{% csrf_token %}
+			<p>
+				{{ menu_selection_form.as_table }}
+				<input type="submit" hidden="hidden" name="Ok" value="Ok" />
+			</p>
+		</form>
+
+
+		<p id="user">
+			{% if user.username != "" %}
+				<label>{{ user.first_name }} {{ user.last_name }} ({{ user.username }})  ;  Email : {{ user.email }}</label>
+				<br/>
+			{% endif %}
+			<label>Version : {{ VERSION }}</label>
+		</p>
+		<p>{{ info.info }}</p>
+	</div>
+{% endblock corps %}
+
+

@@ -1,0 +1,144 @@
+
+.recherche
+{
+	width: 99%;
+	font-size: 100%;
+	margin: 0px;
+	padding: 0px;
+	margin-left: 0.5%;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+}
+
+.recherche_champ
+{
+	min-width: 240px;
+	font-size: 100%;
+	margin: 0px;
+	padding: 0px;
+	line-height: 250%;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+}
+
+.recherche_bouton
+{
+	min-width: 220px;
+	vertical-align : top;
+	text-align: right;
+	width: 20%;
+	font-size: 100%;
+	margin: 0px;
+	padding: 0px;
+	line-height: 250%;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+}
+
+.list_p
+{
+	width: 100%;
+	font-size: 85%;
+	color: grey;
+	text-align: right;
+	margin: 0px;
+	padding: 0px;
+	margin-left: 0px;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+}
+
+.list
+{
+	width: 100%;
+	max-height: 70vh;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	border-color: black;
+	border-width: 2px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	overflow: scroll ; /*limite la taille et ajoute un assenceur */
+	border-collapse: collapse;
+}
+
+.list_table
+{
+	width: 100%;
+	border-color: black;
+	border-width: 0px;
+	border-right-width: 2px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+}
+
+.list_table_caption
+{
+	line-height: 150%;
+	border-color: black;
+	border-width: 0px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+}
+
+.list_thead
+{
+
+}
+
+.list_thead_tr
+{
+
+}
+
+.list_thead_th
+{
+	border-color: black;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.list_body
+{
+
+}
+
+.list_body_tr_i
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+	background-color: rgba(255, 0, 255, 0.2);
+}
+.list_body_tr_i:hover
+{
+	background-color: rgba(255, 0, 255, 0.3);
+}
+.list_body_tr_p
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+	background-color: rgba(0, 200, 255, 0.1);
+}
+.list_body_tr_p:hover
+{
+	background-color: rgba(0, 200, 255, 0.5);
+}
+
+.list_body_td
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: dashed; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+}
+
+

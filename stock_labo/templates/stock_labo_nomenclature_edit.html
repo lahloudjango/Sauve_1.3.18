@@ -1,0 +1,59 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<form action="/django/stock_labo/nomenclature_edit/" method="get">
+		<p class="info">Création nouvel article</p>
+		{% if info.info != None %}
+			<p class="info">{% autoescape off %}{{ info.info }}{% endautoescape %}</p>
+		{% endif %}
+		{% if info.erreur != None %}
+			<p class="erreur">{% autoescape off %}{{ info.erreur }}{% endautoescape %}</p>
+		{% endif %}
+		<table align="center">
+			<tbody>
+				{% include "stock_labo_form_as_table.html" with form=form formulaire_text="formulaire_edit_text" formulaire_champ="formulaire_edit_champ" %}
+				<tr>
+					<td class="formulaire_edit_text">
+						{{ form.collection.label }}
+					</td>
+					<td class="formulaire_edit_champ">
+						{% if form.collection.value %}
+							<label>Oui</label>
+						{% else %}
+							<label>Non</label>
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<td class="formulaire_text">
+						<input class="formulaire_input" type="submit"  name="annuler" value="Annuler" />
+						{% if modif != None %}
+							<input class="formulaire_input" type="submit"  name="supprimer" value="Supprimer" />
+						{% endif %}
+					</td>
+					<td class="formulaire_champ">
+						<input class="formulaire_input" type="submit"  name="valider" value="Valider" />
+						{% if modif != None %}
+							<input class="formulaire_input" type="submit" name="dupliquer" value="Dupliquer" />
+							<a class="formulaire_input" id="bonton_print_etiquette_{{ print_id }}" onclick="etiquette(this, {{ print_id }}, 'nomenclature')" style="vertical-align: bottom;"title="Etiquette" ><img src="/static/svg/document-print.svg" height=\"24\" alt=\"Etiquette\"/></a>
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+{% endblock corps%}
+

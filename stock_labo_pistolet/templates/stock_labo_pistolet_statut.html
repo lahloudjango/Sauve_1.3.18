@@ -1,0 +1,95 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock title%}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	<div  class="header_pistolet">
+		<p>{{ header.page }}</p>
+	</div>
+{% endblock header%}
+
+{% block corps %}
+	<div  class="page_pistolet">
+			<table>
+				<tbody>
+					<tr>
+						<td class="formulaire_pistolet_champ" colspan="2">
+							<label>{{ info.code }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ">
+							<label>Article :</label>
+						</td>
+						<td class="formulaire_pistolet_champ">
+							<label>{{ info.article }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ" colspan="2">
+							<label>{{ info.description }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ">
+							<label>Stockage :</label>
+						</td>
+						<td class="formulaire_pistolet_champ">
+							<label>{{ info.emplacement_stock }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ">
+							<label>Actuel :</label>
+						</td>
+						<td class="formulaire_pistolet_champ">
+							<label>{{ info.emplacement_actuel }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ">
+							<label>Panier :</label>
+						</td>
+						<td class="formulaire_pistolet_champ">
+							<label>{{ info.panier }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ">
+							<label>Date création :</label>
+						</td>
+						<td class="formulaire_pistolet_champ">
+							<label>{{ info.creation }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ">
+							<label>Date réception :</label>
+						</td>
+						<td class="formulaire_pistolet_champ">
+							<label>{{ info.reception }}</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_pistolet_champ">
+							<label>Fin de validité :</label>
+						</td>
+						<td class="formulaire_pistolet_champ">
+							<label>{{ info.fin_validite }}</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<form action="/django/stock_labo_pistolet/statut/" method="get">
+			{% csrf_token %}
+			{{ scan.cb }}
+			<p class=helptext>{{ scan.cb.help_text }}</p>
+		</form>
+	</div>
+{% endblock corps %}
+
+

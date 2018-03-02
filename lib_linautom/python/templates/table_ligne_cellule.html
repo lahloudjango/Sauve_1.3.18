@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<td
+	{% if h.cellule_class != None %} class="{{ h.cellule_class }}"{% endif %}
+	{% if h.title != None %} title="{{ h.title }}"{% endif %}
+	{% if h.style != None %} style="{{ h.style }}"{% endif %}
+	{% if h.colspan != None %} colspan="{{ h.colspan }}"{% endif %}
+	{% if h.rowspan != None %} rowspan="{{ h.rowspan }}"{% endif %}
+	{% if h.cellule_id != None %} id="{{ h.cellule_id }}"{% endif %}
+	{% if h.onclick != None %} onclick="{{ h.onclick }}"{% endif %}
+	>
+	{% if h.href != None %}
+		<a href="{{ h.href }}">
+	{% endif %}
+	{% autoescape off %}{{ h.label }}{% endautoescape %}
+	{% if h.href != None %}
+		</a>
+	{% endif %}
+</td>

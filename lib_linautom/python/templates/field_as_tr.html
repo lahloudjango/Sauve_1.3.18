@@ -1,0 +1,26 @@
+{% load i18n %}
+
+{% if field.is_hidden == 1 %}
+	<tr>
+		<td>
+		</td>
+		<td>
+			{{ field.errors }}
+			{{ field }}
+		</td>
+	</tr>
+{% endif %}
+{% if field.is_hidden == 0 %}
+	<tr>
+		<td{% if formulaire_text != None %} class="{{ formulaire_text }}"{% endif %}>
+			{{ field.label }}{% if field.field.required == True %}<sup title="{% trans "Champ obligatoire" %}">?</sup>{% endif %}
+		</td>
+		<td{% if formulaire_champ == None %} class="{{ formulaire_champ }}"{% endif %}>
+			{{ field.errors }}
+			{{ field }}
+			{% if field.help_text != None and field.help_text != ""%}
+				<label class="helptext">{{ field.help_text }}</label>
+			{% endif %}
+		</td>
+	</tr>
+{% endif %}

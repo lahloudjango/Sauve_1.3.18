@@ -1,0 +1,101 @@
+
+.list2
+{
+	max-height: 20vh;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	border-color: black;
+	border-width: 2px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	overflow: scroll ; /*limite la taille et ajoute un assenceur */
+	border-collapse: collapse;
+}
+
+.list2_table
+{
+	width: 100%;
+	border-color: black;
+	border-width: 0px;
+	border-right-width: 2px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+}
+
+.list2_table_caption
+{
+	line-height: 150%;
+	border-color: black;
+	border-width: 0px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+}
+
+.list2_thead
+{
+
+}
+
+.list2_thead_tr
+{
+	border-color: black;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+}
+
+.list2_thead_th
+{
+	border-color: black;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.list2_body
+{
+
+}
+
+
+.list2_body_tr_i
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+	background-color: rgba(255, 0, 255, 0.2);
+}
+.list2_body_tr_i:hover
+{
+	background-color: rgba(255, 0, 255, 0.3);
+}
+.list2_body_tr_p
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+	background-color: rgba(0, 200, 255, 0.2);
+}
+.list2_body_tr_p:hover
+{
+	background-color: rgba(0, 200, 255, 0.5);
+}
+
+.list2_body_td
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: dashed; /* solid double groove outset dotted dashed inset ridge */
+	border-collapse: collapse;
+}
+
+
+
+
+

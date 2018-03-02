@@ -1,0 +1,66 @@
+
+.onglet
+{
+	vertical-align:bottom;
+	margin: 0px auto;
+	padding: 0px;
+	padding-top: 15px;
+	margin-bottom: 0px;
+	width: 100%;
+	font-size: 150%;
+	color: black;
+	line-height: 100%;
+	text-align: left;
+	vertical-align:bottom;
+	letter-spacing: 0px;
+	border-color: black;
+	border-width: 5px;
+	border-style: none;
+	border-bottom-style: solid;
+
+}
+
+.onglet_passif
+{
+	display: inline-block;
+	vertical-align:bottom;
+	border-radius: 10px 10px 0px 0px;
+	background-color: rgba(134, 180, 236, 0.8);
+	margin: 0px;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	padding-bottom: 4px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.onglet_passif:hover
+{
+	display: inline-block;
+	vertical-align:bottom;
+	border-radius: 10px 10px 0px 0px;
+	background-color: rgba(134, 180, 236, 1.0);
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 4px;
+	padding-top: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.onglet_actif
+{
+	display: inline-block;
+	vertical-align:bottom;
+	border-radius: 10px 10px 0px 0px;
+	background-color:  rgba(163, 26, 106, 0.4);
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 4px;
+	padding-top: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+}

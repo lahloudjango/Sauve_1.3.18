@@ -1,0 +1,119 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+	<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_base_bouton.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_nomenclature_liste.css" />
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<div class="list_global">
+		<form class="recherche" action="/django/stock_labo/nomenclature/" method="get">
+			<table style="width:100%;">
+				<tbody style="width:100%;">
+					<tr style="width:100%;">
+						<td class="recherche_champ">
+							<p class="recherche_champ">
+								{{ recherche.code }}
+								<label> - </label>
+								{{ recherche.description }}
+								<label> - </label>
+								{{ recherche.type_nomenclature }}
+								<label> - </label>
+								{{ recherche.date_du }}
+								<label> - </label>
+								{{ recherche.date_au }}
+								<label> - </label>
+								{{ recherche.commentaire }}
+								<br/>
+								{{ recherche.collection.label }}{{ recherche.collection }}
+								<label> - </label>
+								{{ recherche.sup.label }}{{ recherche.sup }}
+							</p>
+						</td>
+						<td class="recherche_bouton">
+							<p class="recherche_champ">
+								<input type="submit"  style="font-size: 100%" name="recherche" value="Recherche" title="Exécuter la recherche" />
+								<input type="submit"  style="font-size: 100%" name="suivant" value="Res. suivant" title="Afficher les résultats suivants"/>
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			{% csrf_token %}
+			<div class="list">
+				<table class="list_table" summary="{{ list.summary }}">
+					<caption class="list_table_caption" >{{ list.caption }}</caption>
+					<thead class="list_thead">
+						{% for ligne in list.headers %}
+							<tr class="list_thead_tr">
+								{% for h in ligne.cellules %}
+									<th class="list_thead_th"
+										{% if h.title != None %}title="{{ h.title }}"{% endif %}
+										{% if h.ligne_id != None %}id="{{ h.ligne_id }}"{% endif %}
+										{% if h.onclick != None %}onclick="{{ h.onclick }}"{% endif %}
+										{% if c.style != None %}style="{{ c.style }}"{% endif %}
+										{% if h.width != None %}width="{{ h.width }}"{% endif %}
+									>
+										{% if h.href != None %}<a href="{{ h.href }}">{% endif %}{% autoescape off %}{{ h.label }}{% endautoescape %}{% if h.href != None %}</a>{% endif %}
+									</th>
+								{% endfor %}
+							</tr>
+						{% endfor %}
+					</thead>
+					<tbody class="list_body">
+						{% for ligne in list.liste %}
+							{% if ligne.paire == 1 %}
+								<tr class="list_body_tr_i">
+									{% for c in ligne.cellules %}
+										<td class="list_body_td"
+											{% if c.title != None %}title="{{ c.title }}"{% endif %}
+											{% if c.cellule_id != None %}id="{{ c.cellule_id }}"{% endif %}
+											{% if c.onclick != None %}onclick="{{ c.onclick }}"{% endif %}
+											{% if c.style != None %}style="{{ c.style }}"{% endif %}
+											{% if c.width != None %}width="{{ c.width }}"{% endif %}
+										>
+											{% if c.href != None %}<a href="{{ c.href }}">{% endif %}{% autoescape off %}{{ c.label }}{% endautoescape %}{% if c.href != None %}</a>{% endif %}
+										</td>
+									{% endfor %}
+								</tr>
+							{% else %}
+								<tr class="list_body_tr_p">
+									{% for c in ligne.cellules %}
+										<td class="list_body_td"
+											{% if c.title != None %}title="{{ c.title }}"{% endif %}
+											{% if c.cellule_id != None %}id="{{ c.cellule_id }}"{% endif %}
+											{% if c.onclick != None %}onclick="{{ c.onclick }}"{% endif %}
+											{% if c.style != None %}style="{{ c.style }}"{% endif %}
+											{% if c.width != None %}width="{{ c.width }}"{% endif %}
+										>
+											{% if c.href != None %}<a href="{{ c.href }}">{% endif %}{% autoescape off %}{{ c.label }}{% endautoescape %}{% if c.href != None %}</a>{% endif %}
+										</td>
+									{% endfor %}
+								</tr>
+							{% endif %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="list_p">
+				{{ recherche.limit_du.label }}{{ recherche.limit_du }}<label> </label>{{ recherche.limit_au.label }}{{ recherche.limit_au }}<label> : </label><label title="nombre de ligne afficher / nombre de résultat de recherche / nombre total">{{ list.n_ligne_limit }} de {{ list.n_ligne_affiche }} sur {{ list.n_ligne_total }}</label>
+			</div>
+		</form>
+	</div>
+	<div class="bouton-right">
+		{% for b in bouton.liste %}
+			<center><a class="bouton_action" title="{{ b.title }}" href="{{ b.href }}" {% if b.new_windows == 1 %}target="_blank"{% endif %}>{% autoescape off %}{{ b.label }}{% endautoescape %}</a></center>
+		{% endfor %}
+	</div>
+{% endblock corps%}
+

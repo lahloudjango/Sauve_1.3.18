@@ -1,0 +1,36 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<form action="/django/stock_labo/entree/" method="get">
+		{% if code_barre != None %}
+			<p>{{ code_barre }}</p>
+		{% endif %}
+		<table align="center">
+			<tbody>
+				{% include "stock_labo_form_as_table.html" with form=form formulaire_text="formulaire_edit_text" formulaire_champ="formulaire_edit_champ" %}
+				<tr>
+					<td class="formulaire_text">
+					</td>
+					<td class="formulaire_champ">
+						<input class="formulaire_input" type="submit"  name="annuler" value="Annuler" />
+						<input class="formulaire_input" type="submit"  name="valider" value="Valider" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+{% endblock corps%}
+

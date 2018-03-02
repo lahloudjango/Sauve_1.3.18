@@ -1,0 +1,69 @@
+
+.header
+{
+	border-color: black;
+	border-width: 0px;
+	border-style: solid;
+	white-space:nowrap;
+}
+
+
+.header_logo
+{
+	vertical-align : middle;
+	width: 300px;
+	margin: 0px;
+	margin-right: 0%;
+	margin-left: 0px;
+	padding: 0px;
+	padding-top: 8px;
+	font-size: 150%;
+	line-height: 150%;
+	color: black;
+	text-align: center;
+	letter-spacing: 1px;
+	border-color: black;
+	border-width: 0px;
+	border-style: solid;
+	border-radius: 10px;
+	background-color: rgba(163, 26, 106, 0.4);
+}
+
+.header_apps
+{
+
+	vertical-align : middle;
+ 	margin: 0px;
+	padding: 0px;
+	font-size: 150%;
+	line-height: 150%;
+	color: black;
+	text-align: center;
+	letter-spacing: 1px;
+	border-color: black;
+	border-width: 0px;
+	border-style: solid;
+	border-radius: 10px;
+	background-color: rgba(163, 26, 106, 0.4);
+}
+
+.header_login
+{
+
+	vertical-align : middle;
+	min-width: 20%;
+ 	margin: 0px;
+	margin-right: 0px;
+	margin-left: 0%;
+	padding: 0px;
+	font-size: 150%;
+	line-height: 150%;
+	color: black;
+	text-align: center;
+	letter-spacing: 1px;
+	border-color: black;
+	border-width: 0px;
+	border-style: solid;
+	border-radius: 10px;
+	background-color: rgba(163, 26, 106, 0.4);
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{% block title %}{% endblock %}</title>
+		<link rel="shortcut icon" href="/static/logo_150.png" />
+		<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_base.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_base_header.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_base_onglet.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/stock_labo_base_corps.css" />
+		{% if brython != None %}
+			<script language="JavaScript" type="text/javascript" src="/static/brython/brython.js"></script>
+		{% endif %}
+		<script type="text/javascript" src="/static/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/impression_etiquette.js"></script>
+		{% block link %}{% endblock link %}
+	<body {% if brython != None %}onload="brython()"{% endif %}>
+		<div id="filtre">
+			<div class="page">
+				<div class="header">
+					{% block header %} {% endblock header %}
+				</div>
+				<div class="onglet">
+					{% block onglet %} {% endblock onglet %}
+				</div>
+				<div class="corps">
+					{% block corps %}
+					{% endblock corps%}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

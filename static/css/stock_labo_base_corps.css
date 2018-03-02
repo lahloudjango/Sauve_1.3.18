@@ -1,0 +1,63 @@
+
+.corps
+{
+	width: 100%;
+	margin: 0px;
+	margin-top: 10px;
+	padding: 0px;
+	border-color: black;
+	border-width: 0px;
+	border-style: solid; /* solid double groove outset dotted dashed inset ridge */
+}
+
+.formulaire_text
+{
+	text-align: right;
+	line-height: 150%;
+	font-size: 150%;
+	margin: 0px;
+	padding: 0px;
+	padding-right: 50px
+}
+.formulaire_champ
+{
+	text-align: left;
+	line-height: 250%;
+	font-size: 150%;
+	margin: 0px;
+	padding: 0px;
+}
+.formulaire_input
+{
+	text-align: left;
+	line-height: 150%;
+	font-size: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.formulaire_edit_text
+{
+	text-align: right;
+	line-height: 150%;
+	font-size: 150%;
+	margin: 0px;
+	padding: 0px;
+	padding-right: 50px
+}
+.formulaire_edit_champ
+{
+	text-align: left;
+	line-height: 150%;
+	font-size: 150%;
+	margin: 0px;
+	padding: 0px;
+}
+.formulaire_edit_input
+{
+	text-align: left;
+	line-height: 100%;
+	font-size: 100%;
+	margin: 0px;
+	padding: 0px;
+}

@@ -1,0 +1,30 @@
+{% extends "swap_base.html" %}
+
+{% load i18n %}
+{% block title %}{{ header.page }}{% endblock title%}
+
+{% block link %}
+	<link rel="stylesheet" type="text/css" href="/django/static/css/swap_base.css" />
+	<link rel="stylesheet" type="text/css" href="/django/static/css/swap_base_corps.css" />
+	<link rel="stylesheet" type="text/css" href="/django/static/css/swap_pistolet.css" />
+{% endblock link %}
+
+{% block header %}
+	{% include "swap_head.html" %}
+	{% include "swap_onglet.html" %}
+{% endblock header %}
+
+{% block corps %}
+	<div class="pistolet_menu">
+		{% for o in menu_pistolet.ligne.onglets %}
+			{% if o.visible == True %}
+				<p><a class="pistolet_menu_ligne" href="{{ o.href }}" title="{{ o.title }}">{% autoescape off %}{{ o.label }}{% endautoescape %}</a></p>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock corps %}
+
+{% block footer %}
+	{% include "swap_foot.html" %}
+{% endblock footer %}
+

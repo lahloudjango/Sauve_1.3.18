@@ -1,0 +1,58 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<form action="/django/stock_labo/panier_contenant_edit/" method="get">
+		{% if info.erreur != None %}
+			<p class="erreur">{{ info.erreur }}</p>
+		{% endif %}
+		{% if code_barre != None %}
+			<p class="info">Contenant : {{ code_barre }}</p>
+		{% endif %}
+		<p class="info">Article : {{ nomenclature_d }} - Lot : {{ nomenclature_lot_d }}</p>
+		<table align="center">
+			<tbody>
+				{% include "stock_labo_form_as_table.html" with form=form formulaire_text="formulaire_edit_text" formulaire_champ="formulaire_edit_champ" %}
+				<tr>
+					<td class="formulaire_text">
+					<input class="formulaire_input" type="submit"  name="annuler" value="Annuler" />
+						{% if code_barre != None %}
+							<input class="formulaire_input" type="submit"  name="supprimer" value="Supprimer" />
+						{% endif %}
+					</td>
+					<td class="formulaire_champ">
+						<input class="formulaire_input" type="submit"  name="valider" value="Valider" />
+						{% if code_barre != None %}
+							<input class="formulaire_input" type="submit"  name="dupliquer" value="Dupliquer" />
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<td class="formulaire_text">
+						{% if code_barre != None %}
+							<input class="formulaire_input" type="submit"  name="print_contenant" value="Etiquette Contenant" />
+						{% endif %}
+					</td>
+					<td class="formulaire_champ">
+						{% if code_barre != None %}
+							<input class="formulaire_input" type="submit"  name="print_emplacement" value="Etiquette Emplacement" />
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+{% endblock corps%}
+

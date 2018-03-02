@@ -1,0 +1,41 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock title%}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	<div  class="header_pistolet">
+		<p>{{ header.page }}</p>
+	</div>
+{% endblock header%}
+
+{% block corps %}
+	<div  class="page_pistolet">
+		{% if info.info != None %}
+			<p class="info">{% autoescape off %}{{ info.info }}{% endautoescape %}</p>
+		{% endif %}
+		{% if info.erreur != None %}
+			<p class="erreur">{% autoescape off %}{{ info.erreur }}{% endautoescape %}</p>
+		{% endif %}
+		<form action="/django/stock_labo_pistolet/reception/" method="get">
+			<table align="center">
+				<tbody>
+					{% include "stock_labo_form_as_table.html" with form=form formulaire_text="formulaire_pistolet_text" formulaire_champ="formulaire_pistolet_champ" %}
+					<tr>
+						<td class="formulaire_pistolet_text" colspan="2">
+							<center>
+							<input class="formulaire_input" type="submit"  name="rechercher" value="Rechercher - Receptionner" />
+							</center>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			{{ scan.cb }}
+			<p class=helptext>{{ scan.cb.help_text }}</p>
+		</form>
+	</div>
+{% endblock corps %}
+
+

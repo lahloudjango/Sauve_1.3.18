@@ -1,0 +1,51 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+
+{% block corps %}
+	<script type="text/python">
+		from browser import document, alert
+
+		def echo(ev):
+			document['bp_annuler'].hidden = "hidden"
+			document['bp_rechercher'].hidden = "hidden"
+			document['p_erreur'].hidden = ""
+			document['p_info'].text = "Dans l'attente vous pouvez continuer dans l'onglet précédent"
+
+		document['bp_rechercher'].bind('click',echo)
+	</script>
+
+	<form action="/django/stock_labo/nomenclature_nettoyage/" method="get">
+		<p id="p_erreur" class="erreur" hidden="hidden">Recherche en cours ...
+			<br/>Ne fermez pas l'onglet avant réception du fichier de résultat
+		</p>
+		<p id="p_info" class="info">Attention la recherche peut durée plusieurs minutes
+			<br/>Ne fermez pas l'onglet avant la fin de la recherche
+		</p>
+		<table align="center">
+			<tbody>
+				<tr>
+					<td class="formulaire_text">
+						<input id="bp_annuler" class="formulaire_input" type="submit"  name="annuler" value="Annuler" />
+					</td>
+					<td class="formulaire_champ">
+						<input id="bp_rechercher" class="formulaire_input" type="submit"  name="rechercher" value="Rechercher" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+{% endblock corps%}
+

@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% if ligne.affiche == True %}
+	<tr
+		{% if ligne.ligne_class != None %} class="{{ ligne.ligne_class }}"{% endif %}
+		{% if ligne.title != None %} title="{{ ligne.title }}"{% endif %}
+		{% if ligne.style != None %} style="{{ ligne.style }}"{% endif %}
+		{% if ligne.ligne_id != None %} id="{{ ligne.ligne_id }}"{% endif %}
+		>
+		{% for h in ligne.cellules %}
+			{% include "table_ligne_cellule.html" with h=h %}
+		{% endfor %}
+	</tr>
+{% endif %}

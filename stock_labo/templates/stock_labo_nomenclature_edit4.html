@@ -1,0 +1,72 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<form action="/django/stock_labo/nomenclature_edit4/" method="get">
+		<p class="info">Nouvelle formule Roxane</p>
+		{% if info.info != None %}
+			<p class="info">{% autoescape off %}{{ info.info }}{% endautoescape %}</p>
+		{% endif %}
+		{% if info.erreur != None %}
+			<p class="erreur">{% autoescape off %}{{ info.erreur }}{% endautoescape %}</p>
+		{% endif %}
+		<table align="center">
+			<tbody>
+				{% include "stock_labo_form_as_table.html" with form=form formulaire_text="formulaire_edit_text" formulaire_champ="formulaire_edit_champ" %}
+				{% 	if step == 1 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ nbr_contenant_form.contenant_type1.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ nbr_contenant_form.contenant_type1.errors }}
+							{{ nbr_contenant_form.contenant_type1 }}{{ nbr_contenant_form.contenant_type1.help_text }}<label> : </label>{{ nbr_contenant_form.contenant_nombre1 }}{{ nbr_contenant_form.contenant_nombre1.help_text }}
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ nbr_contenant_form.contenant_type2.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ nbr_contenant_form.contenant_type2.errors }}
+							{{ nbr_contenant_form.contenant_type2 }}{{ nbr_contenant_form.contenant_type2.help_text }}<label> : </label>{{ nbr_contenant_form.contenant_nombre2 }}{{ nbr_contenant_form.contenant_nombre2.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+
+				<tr>
+					<td class="formulaire_text">
+						{% 	if step == 0 %}
+							<input hidden="hidden" type="submit"  name="recherche" value="Recherche fichier Roxane" />
+						{% endif %}
+						{% 	if step == 1 %}
+							<input hidden="hidden" type="submit"  name="valider" value="Créer Imprimer" />
+						{% endif %}
+						<input class="formulaire_input" type="submit"  name="annuler" value="Annuler" />
+					</td>
+					<td class="formulaire_champ">
+						{% 	if step == 0 %}
+							<input class="formulaire_input" type="submit"  name="recherche" value="Recherche fichier Roxane" />
+						{% endif %}
+						{% 	if step == 1 %}
+							<input class="formulaire_input" type="submit"  name="valider" value="Créer Imprimer" />
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+{% endblock corps%}
+

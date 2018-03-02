@@ -1,0 +1,230 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<form action="/django/stock_labo/nomenclature_edit3/" method="get">
+		<p class="info">Création nouvelle série/coupage</p>
+		{% if info.info != None %}
+			<p class="info">{% autoescape off %}{{ info.info }}{% endautoescape %}</p>
+		{% endif %}
+		{% if info.erreur != None %}
+			<p class="erreur">{% autoescape off %}{{ info.erreur }}{% endautoescape %}</p>
+		{% endif %}
+		<table align="center">
+			<tbody>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_type.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_type.errors }}
+							{{ form.nomenclature_type }}{{ form.nomenclature_type.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_code_barre.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_code_barre.errors }}
+							{{ form.nomenclature_code_barre }}{{ form.nomenclature_code_barre.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_code.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_code.errors }}
+							{{ form.nomenclature_code }}{{ form.nomenclature_code.help_text }}
+							<input class="formulaire_input" type="submit"  name="recherche" value="Rechercher Model" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_description.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_description.errors }}
+							{{ form.nomenclature_description }}{{ form.nomenclature_description.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_commentaire.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_commentaire.errors }}
+							{{ form.nomenclature_commentaire }}{{ form.nomenclature_commentaire.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_duree_validite.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_duree_validite.errors }}
+							{{ form.nomenclature_duree_validite }}{{ form.nomenclature_duree_validite.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_poids_reference.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_poids_reference.errors }}
+							{{ form.nomenclature_lot_poids_reference }}{{ form.nomenclature_lot_poids_reference.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_code.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_code.errors }}
+							{{ form.nomenclature_lot_code }}{{ form.nomenclature_lot_code.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_commentaire.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_commentaire.errors }}
+							{{ form.nomenclature_lot_commentaire }}{{ form.nomenclature_lot_commentaire.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_projet.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_projet.errors }}
+							{{ form.nomenclature_lot_projet }}{{ form.nomenclature_lot_projet.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_client.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_client.errors }}
+							{{ form.nomenclature_lot_client }}{{ form.nomenclature_lot_client.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_client_ka.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_client_ka.errors }}
+							{{ form.nomenclature_lot_client_ka }}{{ form.nomenclature_lot_client_ka.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_roxane_manuel.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_roxane_manuel.errors }}
+							{{ form.nomenclature_lot_roxane_manuel }}{{ form.nomenclature_lot_roxane_manuel.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_site_entrepot_magasin.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_site_entrepot_magasin.errors }}
+							{{ form.nomenclature_site_entrepot_magasin }}{{ form.nomenclature_site_entrepot_magasin.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_date_creation.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_date_creation.errors }}
+							{{ form.contenant_date_creation }}{{ form.contenant_date_creation.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_provenance_site.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_provenance_site.errors }}
+							{{ form.contenant_provenance_site }}{{ form.contenant_provenance_site.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text" colspan=2>
+							<center><label>Contenants pour cet article</label></center>
+						</td>
+					</tr>
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_type1.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_type1.errors }}
+							{{ form.contenant_type1 }}{{ form.contenant_type1.help_text }}<label> : </label>{{ form.contenant_nombre1 }}{{ form.contenant_nombre1.help_text }}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_type2.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_type2.errors }}
+							{{ form.contenant_type2 }}{{ form.contenant_type2.help_text }}<label> : </label>{{ form.contenant_nombre2 }}{{ form.contenant_nombre2.help_text }}
+						</td>
+					</tr>
+
+
+				<tr>
+					<td class="formulaire_text">
+						<input class="formulaire_input" type="submit"  name="annuler" value="Retour" />
+					</td>
+					<td class="formulaire_champ">
+						<input class="formulaire_input" type="submit"  name="valider" value="Créer et imprimer" />
+					</td>
+					<td class="formulaire_champ">
+						<input class="formulaire_input" type="submit"  name="print" value="Imprimer" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+{% endblock corps%}
+

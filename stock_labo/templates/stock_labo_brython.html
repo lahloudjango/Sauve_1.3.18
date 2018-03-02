@@ -1,0 +1,35 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+	<script type="text/python" src="/static/bpy/stock_labo_brython.py"></script>
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+{% block corps %}
+	<p>
+		<label>websocket</label>
+		<br/>
+		<button id="openbtn">Ouvrir la connexion</button>
+		<br/>
+		<input id="data"/><button id="sendbtn" disabled="disabled" >Envoyer</button>
+		<br/>
+		<button id="closebtn" disabled="disabled" >Fermer la connexion</button>
+	</p>
+	<p>
+		<label>ajax</label>
+		<br/>
+		<input id="data1"/>
+		<br/>
+		<input id="data2"/>
+		<br/>
+		<button id="recherche">recherche ajax</button>
+	</p>
+{% endblock corps %}

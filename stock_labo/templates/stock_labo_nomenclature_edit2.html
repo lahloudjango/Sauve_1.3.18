@@ -1,0 +1,261 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<p class="info">Création nouveau concentré</p>
+	<form action="/django/stock_labo/nomenclature_edit2/" method="get">
+		{% if info.info != None %}
+			<p class="info">{% autoescape off %}{{ info.info }}{% endautoescape %}</p>
+		{% endif %}
+		{% if info.erreur != None %}
+			<p class="erreur">{% autoescape off %}{{ info.erreur }}{% endautoescape %}</p>
+		{% endif %}
+		<table align="center">
+			<tbody>
+				{% if form.nomenclature_type.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_type.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_type.errors }}
+							{{ form.nomenclature_type }}{{ form.nomenclature_type.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_code.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_code.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_code.errors }}
+							{{ form.nomenclature_code }}{{ form.nomenclature_code.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_description.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_description.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_description.errors }}
+							{{ form.nomenclature_description }}{{ form.nomenclature_description.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_commentaire.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_commentaire.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_commentaire.errors }}
+							{{ form.nomenclature_commentaire }}{{ form.nomenclature_commentaire.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_duree_validite.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_duree_validite.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_duree_validite.errors }}
+							{{ form.nomenclature_duree_validite }}{{ form.nomenclature_duree_validite.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_lot_poids_reference.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_poids_reference.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_poids_reference.errors }}
+							{{ form.nomenclature_lot_poids_reference }}{{ form.nomenclature_lot_poids_reference.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_lot_code.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_code.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_code.errors }}
+							{{ form.nomenclature_lot_code }}{{ form.nomenclature_lot_code.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_lot_commentaire.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_commentaire.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_commentaire.errors }}
+							{{ form.nomenclature_lot_commentaire }}{{ form.nomenclature_lot_commentaire.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_lot_projet.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_projet.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_projet.errors }}
+							{{ form.nomenclature_lot_projet }}{{ form.nomenclature_lot_projet.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_lot_client.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_client.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_client.errors }}
+							{{ form.nomenclature_lot_client }}{{ form.nomenclature_lot_client.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_lot_client_ka.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_lot_client_ka.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_lot_client_ka.errors }}
+							{{ form.nomenclature_lot_client_ka }}{{ form.nomenclature_lot_client_ka.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.nomenclature_site_entrepot_magasin.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.nomenclature_site_entrepot_magasin.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.nomenclature_site_entrepot_magasin.errors }}
+							{{ form.nomenclature_site_entrepot_magasin }}{{ form.nomenclature_site_entrepot_magasin.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.contenant_date_creation.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_date_creation.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_date_creation.errors }}
+							{{ form.contenant_date_creation }}{{ form.contenant_date_creation.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.contenant_provenance_site.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_provenance_site.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_provenance_site.errors }}
+							{{ form.contenant_provenance_site }}{{ form.contenant_provenance_site.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.contenant_type1.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_type1.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_type1.errors }}
+							{{ form.contenant_type1 }}{{ form.contenant_type1.help_text }}<label> : </label>{{ form.contenant_nombre1 }}{{ form.contenant_nombre1.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.contenant_type2.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_type2.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_type2.errors }}
+							{{ form.contenant_type2 }}{{ form.contenant_type2.help_text }}<label> : </label>{{ form.contenant_nombre2 }}{{ form.contenant_nombre2.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if form.contenant_type3.is_hidden == 0 %}
+					<tr>
+						<td class="formulaire_edit_text">
+							{{ form.contenant_type3.label }}
+						</td>
+						<td class="formulaire_edit_champ">
+							{{ form.contenant_type3.errors }}
+							{{ form.contenant_type3 }}{{ form.contenant_type3.help_text }}<label> : </label>{{ form.contenant_nombre3 }}{{ form.contenant_nombre3.help_text }}
+						</td>
+					</tr>
+				{% endif %}
+
+				{% 	if step == 1 %}
+					<tr>
+						<td class="formulaire_text" rowspan={{ nomenclature_lot.len }}>
+							<label>Lots disponible</label>
+						</td>
+					</tr>
+					{% for l in nomenclature_lot %}
+						<tr>
+							<td class="formulaire_champ">
+								<input class="formulaire_input" type="submit"  name="lot" value="{{ l.code }}" />
+							</td>
+						</tr>
+					{% endfor %}
+				{% endif %}
+				<tr>
+					<td class="formulaire_text">
+						{% 	if step == 0 %}
+							<input hidden="hidden" type="submit"  name="recherche" value="Recherche article-lot" />
+						{% endif %}
+						{% 	if step == 1 %}
+							<input hidden="hidden" type="submit"  name="nouveau" value="Nouveau lot" />
+						{% endif %}
+						{% 	if step == 2 or step == 3 %}
+							<input hidden="hidden" type="submit"  name="valider" value="Créer Imprimer" />
+						{% endif %}
+						<input class="formulaire_input" type="submit"  name="annuler" value="Annuler" />
+					</td>
+					<td class="formulaire_champ">
+						{% 	if step == 0 %}
+							<input class="formulaire_input" type="submit"  name="recherche" value="Recherche article-lot" />
+						{% endif %}
+						{% 	if step == 1 %}
+							<input class="formulaire_input" type="submit"  name="nouveau" value="Nouveau lot" />
+						{% endif %}
+						{% 	if step == 2 or step == 3 %}
+							<input class="formulaire_input" type="submit"  name="valider" value="Créer Imprimer" />
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<center>
+			<p>Si l'article ou le lot existe déjà, leurs informations ne seront pas misent à jours<br/>Seul les contenants seront créés</p>
+		</center>
+	</form>
+{% endblock corps%}
+

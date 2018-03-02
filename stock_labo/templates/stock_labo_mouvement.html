@@ -1,0 +1,40 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	{% if info.info != None %}
+		<p class="info">{% autoescape off %}{{ info.info }}{% endautoescape %}</p>
+	{% endif %}
+	{% if info.erreur != None %}
+		<p class="erreur">{% autoescape off %}{{ info.erreur }}{% endautoescape %}</p>
+	{% endif %}
+	<form action="/django/stock_labo/mouvement/" method="get">
+		<table align="center">
+			<tbody>
+				{% include "stock_labo_form_as_table.html" with form=form formulaire_text="formulaire_text" formulaire_champ="formulaire_champ" %}
+				{% include "stock_labo_form_as_table.html" with form=scan formulaire_text="formulaire_text" formulaire_champ="formulaire_champ" %}
+				<tr>
+					<td class="formulaire_text">
+						<input class="formulaire_input" type="submit"  name="valider" value="Valider" />
+					</td>
+					<td class="formulaire_champ">
+						<input class="formulaire_input" type="submit"  name="etiquette" value="Etiquette emplacement" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+{% endblock corps%}
+

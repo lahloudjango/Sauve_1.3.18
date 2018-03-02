@@ -1,0 +1,12 @@
+{% block link %}
+{% endblock link %}
+
+{% for o in onglet %}
+	{% if o.visible == 1 %}
+		{% if o.actif == 1 %}
+			<a class="onglet_actif" href="{{ o.href }}" title="{{ o.title }}">{% autoescape off %}{{ o.label }}{% endautoescape %}</a>
+		{% else %}
+			<a class="onglet_passif" href="{{ o.href }}" title="{{ o.title }}">{% autoescape off %}{{ o.label }}{% endautoescape %}</a>
+		{% endif %}
+	{% endif %}
+{% endfor %}

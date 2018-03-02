@@ -1,0 +1,47 @@
+{% extends "stock_labo_base.html" %}
+
+{% block title %}{{ header.page }}{% endblock %}
+
+{% block link %}
+{% endblock link %}
+
+{% block header %}
+	{% include "stock_labo_head.html" %}
+{% endblock header %}
+{% block onglet %}
+	{% include "stock_labo_onglet.html" %}
+{% endblock onglet %}
+
+
+{% block corps %}
+	<center>
+		<form action="/django/stock_labo/stock_perso_contenant_edit/" method="get">
+			<div class="formulaire">
+				<p></p>
+				{% if code_barre != None %}
+					<p class="info">Contenant : {{ code_barre }}</p>
+				{% endif %}
+				<p class="info">Article : {{ nomenclature_d }} - Lot : {{ nomenclature_lot_d }}</p>
+				<table>
+					<tbody>
+						{% include "stock_labo_form_as_table.html" with form=form formulaire_text="formulaire_edit_text" formulaire_champ="formulaire_edit_champ" %}
+					</tbody>
+				</table>
+				<p>
+					<input type="submit"  name="annuler" value="Annuler" />
+					{% if code_barre != None %}
+						<input type="submit"  name="supprimer" value="Supprimer" />
+					{% endif %}
+					<input type="submit"  name="valider" value="Valider" />
+					{% if code_barre == None %}
+						<input type="submit"  name="nouveau" value="Nouveau" />
+					{% else %}
+						<input type="submit"  name="dupliquer" value="Dupliquer" />
+					{% endif %}
+					<input type="submit"  name="print_empalacement" value="Etiquette emplacement" />
+				</p>
+			</div>
+		</form>
+	</center>
+{% endblock corps%}
+

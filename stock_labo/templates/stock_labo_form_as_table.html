@@ -1,0 +1,26 @@
+{% for field in form %}
+	{% if field.is_hidden == 0 %}
+		<tr>
+			<td class="{{ formulaire_text }}">
+				{{ field.label }}
+			</td>
+			<td class="{{ formulaire_champ }}">
+				{{ field.errors }}
+				{{ field }}{{ field.help_text }}
+			</td>
+		</tr>
+	{% endif %}
+{% endfor %}
+
+{% for field in form %}
+	{% if field.is_hidden == 1 %}
+		<tr>
+			<td>
+			</td>
+			<td>
+				{{ field.errors }}
+				{{ field }}
+			</td>
+		</tr>
+	{% endif %}
+{% endfor %}
